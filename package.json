@@ -10,9 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "eject": "react-scripts eject"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@hello-pangea/dnd": "^17.0.0",
