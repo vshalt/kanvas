@@ -57,8 +57,10 @@ export const useStore = create(
     addTask: (section: string, task: Omit<types.Task, 'id' | 'createdAt'>) => void;
     moveTask: (source: any, destination: any) => void;
     updateTask: (taskId: string, updates: Partial<types.Task>) => void;
+    deleteTask: (taskId: string) => void;
     addSection: (title: string) => void;
     deleteSection: (section: string) => void;
+    updateSection: (sectionId: string, newTitle: string) => void;
     setSectionOrder: (order: string[]) => void;
     setTheme: (themeName: string) => void;
   }>(
@@ -160,6 +162,22 @@ export const useStore = create(
           },
         }));
       },
+      deleteTask: (taskId) => {
+        set((state) => {
+          const { [taskId]: deletedTask, ...remainingTasks } = state.tasks;
+          const allSections = state.sections;
+          for (const sectionId in allSections) {
+            allSections[sectionId].tasks = allSections[sectionId].tasks.filter(
+              (taskIdInSection) => taskIdInSection !== taskId
+            );
+          }
+          return {
+            ...state,
+            sections: allSections,
+            tasks: remainingTasks,
+          };
+        });
+      },
 
       addSection: (title) => {
         const sectionId = `section-${Date.now()}`;
@@ -175,6 +193,20 @@ export const useStore = create(
           },
           sectionOrder: [...state.sectionOrder, sectionId],
         }));
+      },
+      updateSection(sectionId: string, newTitle: string) {
+        set((state) => {
+          return {
+            ...state,
+            sections: {
+              ...state.sections,
+              [sectionId]: {
+                ...state.sections[sectionId],
+                title: newTitle
+              }
+            }
+          };
+        });
       },
 
       deleteSection: (sectionId) => {
