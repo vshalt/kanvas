@@ -25,9 +25,9 @@ export interface Theme {
   };
 }
 
-export interface KanvasData {
+export interface KanvasState {
   tasks: Record<string, Task>;
-  section: Record<string, Column>;
+  sections: Record<string, Section>;
   sectionOrder: string[];
   theme: Theme;
 }
@@ -38,7 +38,7 @@ export interface Kanvas {
   sectionOrder: string[];
   theme: Theme;
   history: {
-    past: KanvasData[];
-    future: KanvasData[];
+    past: KanvasState[];
+    future: KanvasState[];
   };
 }
