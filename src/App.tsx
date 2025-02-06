@@ -61,7 +61,7 @@ function App() {
   return (
     <>
       <BestViewedOnPC />
-      <div className={clsx('min-h-screen', theme.colors.background, theme.colors.text)}>
+      <div className={clsx('max-h-screen', theme.colors.background, theme.colors.text)}>
         <header className={clsx('shadow-sm', theme.colors.surface)}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">

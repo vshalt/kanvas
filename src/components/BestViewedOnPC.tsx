@@ -19,6 +19,8 @@ const BestViewedOnPC = () => {
         <p className="mt-4 text-sm">This website is optimized for larger screens.</p>
       </div>
     </div>
+
+
   );
 };
 

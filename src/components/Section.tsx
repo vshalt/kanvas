@@ -123,7 +123,7 @@ const Section = ({ section, tasks, index }: SectionProps) => {
             ref={provided.innerRef}
             {...provided.droppableProps}
             className={clsx(
-              'h-screen transition-colors',
+              'min-h-[700px] max-h-screen transition-colors',
               snapshot.isDraggingOver ? theme.colors.hover : ''
             )}
           >
